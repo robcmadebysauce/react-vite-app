@@ -3,6 +3,11 @@
 ## Setup
 How to get the project up and running after cloning the repository
 
+within a terminal window
+```bash
+cd react-vite-app
+``` 
+
 Start the server
 ```bash
 php artisan serve
