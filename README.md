@@ -3,6 +3,11 @@
 ## Setup
 How to get the project up and running after cloning the repository
 
+Create a file called `.env` by copying the example file
+```bash
+cp .env.example .env
+```
+
 within a terminal window
 ```bash
 cd react-vite-app

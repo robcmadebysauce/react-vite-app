@@ -1,0 +1,45 @@
+version: '3.0'
+services:
+  # PHP Service
+  app:
+    image: 657106430106.dkr.ecr.eu-west-2.amazonaws.com/php:8.0.15c
+    environment:
+      APP_DEBUG: 'true'
+      APP_ENV: 'local'
+      APP_URL: 'http://localhost'
+      APP_NAME: 'react-vite'
+      APP_KEY: base64:Vjj9aHjbPdyYTt8FRGGeATbLiO+zsUMIWWyK/y7aVzM=
+    container_name: react-vite-app
+    restart: unless-stopped
+    tty: true
+    command: php-fpm
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+
+  # Nginx Service
+  webserver:
+    image: 657106430106.dkr.ecr.eu-west-2.amazonaws.com/nginx:latest-dev
+    container_name: react-vite-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - app
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
