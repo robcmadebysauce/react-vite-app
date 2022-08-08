@@ -11,14 +11,8 @@ cp .env.example .env
 within a terminal window
 ```bash
 cd react-vite-app
-``` 
-
-Start the server
-```bash
-php artisan serve
+docker-compose up
 ```
-Access the site within a browser using the url provided. (eg. http://127.0.0.1:8000/)
-
 
 In a different terminal
 ```bash
